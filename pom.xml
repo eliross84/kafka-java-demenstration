@@ -54,7 +54,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>edu.nwmissouri.demonstration.simple.Producer</mainClass>
+              <mainClass>edu.nwmissouri.demonstratekj.simple.Producer</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
