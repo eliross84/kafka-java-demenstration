@@ -8,8 +8,8 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Producer {
-  static int answer=0;
+public class ProducerMath {
+  static int count=0;
   private static Scanner in;
 
   public static void main(String[] argv) throws Exception {
@@ -34,47 +34,33 @@ public class Producer {
 
     org.apache.kafka.clients.producer.Producer producer = new KafkaProducer(configProperties);
 
-    String message = "Hello, and welcome to the Kafka Math Quiz";
-    ProducerRecord<String, String> rec = new ProducerRecord<String, String>(topicName, message);
-    producer.send(rec);
+    // My Custom logic to return length of string
+    // allows input from keyboard
+      int random = (int)(3*(Math.random())-1);
+      String message = createMessage(random);
+      ProducerRecord<String, String> rec = new ProducerRecord<String, String>(topicName, message);
+      producer.send(rec);
+      
 
-    String line = in.nextLine();
-    while (!line.equals("exit")) {
-      Random rand = new Random();
-      int random = rand.nextInt(3);
-      message = createMessage(random);
-      rec = new ProducerRecord<String, String>(topicName,message);
-      producer.send(rec);
-      line = in.nextLine();
-      int userAnswer = Integer.parseInt(line);
-      if(userAnswer == answer){
-        message = "You are correct! :)";
-      }
-      else{
-        message = "You are wrong... :(";
-      }
-      rec = new ProducerRecord<String, String>(topicName,message);
-      producer.send(rec);
-    }
+    String input = in.nextLine();
+    while (!input.equals("exit")) {
+      ProducerRecord<String, String> rec1 = new ProducerRecord<String, String>(topicName,input);
+      producer.send(rec1);
+      input = in.nextLine();
       in.close();
       producer.close();
+  
+    
+    }
   }
   
   private static String createMessage(int i) {
     String[] questions = { "What is 2+2?", "What is 12*12?", "What is the square root of 121?" };
       String result= questions[i];
-
-      if(i == 0){
-        answer = 4;
-      }
-      else if(i == 1){
-        answer = 144;
-      }
-      else if(i == 2){
-        answer = 11;
-      }
+      count++;
    
-    return result;
+return result;
+  
   }
 
  
