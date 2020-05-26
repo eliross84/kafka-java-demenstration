@@ -34,47 +34,37 @@ public class Producer {
 
     org.apache.kafka.clients.producer.Producer producer = new KafkaProducer(configProperties);
 
-    String message = "Hello, and welcome to the Kafka Math Quiz";
-    ProducerRecord<String, String> rec = new ProducerRecord<String, String>(topicName, message);
-    producer.send(rec);
+    for(int i = 0; i < 4; i++){
+      String message = createMessage(i);
+      ProducerRecord<String, String> rec = new ProducerRecord<String,String>(topicName, message);
+      producer.send(rec);
+    }
 
     String line = in.nextLine();
     while (!line.equals("exit")) {
-      Random rand = new Random();
-      int random = rand.nextInt(3);
-      message = createMessage(random);
-      rec = new ProducerRecord<String, String>(topicName,message);
+      ProducerRecord<String, String> rec = new ProducerRecord<String, String>(topicName,line);
       producer.send(rec);
       line = in.nextLine();
-      int userAnswer = Integer.parseInt(line);
-      if(userAnswer == answer){
-        message = "You are correct! :)";
-      }
-      else{
-        message = "You are wrong... :(";
-      }
-      rec = new ProducerRecord<String, String>(topicName,message);
-      producer.send(rec);
     }
-      in.close();
-      producer.close();
+    
+    in.close();
+    producer.close();
   }
   
   private static String createMessage(int i) {
-    String[] questions = { "What is 2+2?", "What is 12*12?", "What is the square root of 121?" };
-      String result= questions[i];
-
-      if(i == 0){
-        answer = 4;
-      }
-      else if(i == 1){
-        answer = 144;
-      }
-      else if(i == 2){
-        answer = 11;
-      }
+    String[] questions = { "What is the sum to all of these questions?", "What is 2+2?", "What is 12*12?", "What is the square root of 121?" };
+    String result= questions[i];
    
     return result;
+  }
+
+  private static String checkMessage(int userAnswer){
+    if(answer == userAnswer){
+      return "You got it right! :)";
+    }
+    else {
+      return "You got it wrong... :(";
+    }
   }
 
  
