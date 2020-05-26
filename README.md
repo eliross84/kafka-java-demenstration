@@ -3,6 +3,7 @@ This repository will hold the content for a demonstration video via Vid Grid of 
 
 ### Contributers
 - Eli Ross
+- Michael Baumli
 
 ##### Metadata
 - groupId: edu.nwmissouri.demonstratekj
