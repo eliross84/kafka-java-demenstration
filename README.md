@@ -3,7 +3,6 @@ This repository will hold the content for a demonstration video via Vid Grid of 
 
 ### Contributers
 - Eli Ross
-- Jeevan Reddy Mure
 
 ##### Metadata
 - groupId: edu.nwmissouri.demonstratekj
