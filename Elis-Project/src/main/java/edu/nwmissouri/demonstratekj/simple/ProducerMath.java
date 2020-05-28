@@ -60,6 +60,8 @@ public class ProducerMath {
         producer.send(rec);
     } else if (input != "") {
         return;
+    } else if (input == "exit"){
+        return;
     }
 
     input = in.nextLine();
