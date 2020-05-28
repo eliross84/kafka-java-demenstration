@@ -1,16 +1,18 @@
 # kafka-java-demonstration
 This repository will hold the content for a demonstration video via Vid Grid of a Kafka/Java application for 44517 Big Data. 
 
+Repository link [kafka-java-demonstration](https://github.com/eliross84/kafka-java-demonstration)
+
 ### Contributers
 - Eli Ross
 - Michael Baumli
 
-##### Metadata
-- groupId: edu.nwmissouri.demonstratekj
-- artifactId: kafka-java-demonstration
-
 ### Eli Ross' Project
 I am creating a kafka java application of which the producer will ask a small series of math problems and then it is up to the consumer to answer them correctly or not. The producer will be able to reply whether or not the user/consumer got the question correct. 
+
+##### Metadata 
+- groupId: edu.nwmissouri.demonstratekj
+- artifactId: kafka-java-demonstration
 
 1. Prerequisites:
     - Running installations:
@@ -41,3 +43,7 @@ I am creating a kafka java application of which the producer will ask a small se
         - To run the Consumer run the command: `java -cp target/kafka-java-demonstration-1.0-SNAPSHOT-jar-with-dependencies.jar edu.nwmissouri.demonstratekj.simple.Consumer bearcat-messages group1`
             - Note the location of the groupId and artifactId in the command
         - To run the Producer run the command: `java -cp target/kafka-java-demonstration-1.0-SNAPSHOT-jar-with-dependencies.jar edu.nwmissouri.demonstratekj.simple.ProducerMath bearcat-messages` 
+
+#### Resources used to create this project
+- [/denisecase/kafka-api](https://github.com/denisecase/kafka-api)
+- [Stack Overflow](https://stackoverflow.com/) for troubleshooting purposes
